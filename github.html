@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub 学习中心 — Git 与开源协作知识体系</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐙</text></svg>">
+  <link rel="stylesheet" href="css/style.css?v=2026100531">
+</head>
+<body>
+  <header class="topbar">
+    <button id="btn-menu" class="icon-btn" title="收起/展开目录">☰</button>
+    <a class="logo" href="#/home">
+      <span class="logo-icon">🐙</span>
+      <span class="logo-text"><b>GitHub 学习中心</b><i>版本控制与开源协作之道</i></span>
+    </a>
+    <nav class="pack-switch">
+      <a href="index.html" class="pk">☕ Java</a>
+      <a href="co.html" class="pk">🖥️ 计组</a>
+      <a href="os.html" class="pk">🧮 OS</a>
+      <a href="cpp.html" class="pk">🔧 C++</a>
+      <a href="algo.html" class="pk">📐 算法</a>
+      <a href="cse.html" class="pk">📖 英语</a>
+      <a href="github.html" class="pk active">🐙 GitHub</a>
+    </nav>
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input id="search-input" type="text" placeholder="搜索知识点,如:分支、合并冲突、PR、Actions…" autocomplete="off">
+      <div id="search-results" class="search-results"></div>
+    </div>
+    <div class="topbar-right">
+      <a href="#/home" class="progress-mini" id="progress-mini" title="学习进度">📊</a>
+      <button id="btn-theme" class="icon-btn" title="切换深浅主题">🌙</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+        <a href="#/home" class="toc-home">🏠 知识总览</a>
+        <a href="#/drill" class="toc-home" id="toc-drill">🧠 概念学习</a>
+        <nav id="toc"></nav>
+      </div>
+    </aside>
+    <div class="sidebar-mask" id="sidebar-mask"></div>
+    <main class="main" id="main"></main>
+  </div>
+
+  <!-- 课程包加载:更新任何文件后,只需 bump 下方 loader.js 与 style.css 的 v= 版本号 -->
+  <script src="js/loader.js?v=2026100531"></script>
+  <script>window.loadPack('github')</script>
+</body>
+</html>

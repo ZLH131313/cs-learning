@@ -1,0 +1,86 @@
+/* ============ 名词词典:正文中出现这些词会自动高亮,点击显示解释 ============ */
+window.GLOSSARY = {
+
+  /* ---- 基础与工具 ---- */
+  'javadoc': { cat: '工具', def: 'JDK 自带的文档生成工具:从源码中的 /** ... */ 文档注释里提取信息,自动生成一套 HTML 格式的 API 说明手册,类库的官方文档就是这么来的。' },
+  'JVM': { cat: '基础', def: 'Java Virtual Machine,Java 虚拟机。负责加载并执行 .class 字节码,是"一次编写、到处运行"的基石;垃圾回收、内存管理也都由它负责。' },
+  'JDK': { cat: '基础', def: 'Java Development Kit,开发工具包 = JRE + 编译器(javac)、调试器等开发工具。写 Java 程序至少要装它。' },
+  'JRE': { cat: '基础', def: 'Java Runtime Environment,运行环境 = JVM + 核心类库。只运行别人写好的程序,装它就够了。' },
+  '字节码': { cat: '基础', def: '.class 文件里的指令集,由 javac 编译源码得到。它不面向任何操作系统,只面向 JVM,所以同一份字节码能在任何平台的 JVM 上运行。' },
+  'GC': { cat: 'JVM', def: 'Garbage Collection,垃圾回收。JVM 自动识别"不可达对象"(没有任何引用能访问到的对象)并回收其内存,替代 C/C++ 的手动 malloc/free。' },
+  '垃圾回收': { cat: 'JVM', def: '同 GC:JVM 自动回收不再被引用的对象占用的内存。分代收集是主流策略——新生代用复制算法,老年代用标记-整理。' },
+  '跨平台': { cat: '基础', def: '同一段 Java 程序无需修改即可在 Windows/Linux/macOS 运行:源码编译成与操作系统无关的字节码,由各平台各自的 JVM 负责执行。' },
+  'JavaSE': { cat: '基础', def: 'Java Standard Edition,标准版。Java 技术的核心与基础(语法、集合、IO、线程等),企业版 JavaEE 与各类框架都建立在它之上。' },
+  'JavaEE': { cat: '基础', def: 'Java Enterprise Edition,企业版。在 SE 之上扩展的 Web/企业开发技术集合(Servlet、JSP 等),现由社区维护并更名 Jakarta EE。' },
+  'API': { cat: '基础', def: 'Application Programming Interface,应用程序编程接口。广义指类库/系统暴露给调用者的方法集合;狭义指后端提供给前端的 HTTP 接口。' },
+  'IDEA': { cat: '工具', def: 'IntelliJ IDEA,JetBrains 出品的 Java 集成开发环境,提供自动补全、智能修复、重构、调试等能力,是 Java 开发事实上的首选。' },
+  'Maven': { cat: '工具', def: '项目构建与依赖管理工具。用 pom.xml 声明依赖坐标即可自动下载 jar 包并管理版本;一条命令完成编译、测试、打包。' },
+  'Tomcat': { cat: 'Web', def: '开源的 Servlet 容器/Web 服务器,负责接收 HTTP 请求并交给 Java 程序处理。Spring Boot 已将它内嵌,不再需要单独安装部署。' },
+  'Servlet': { cat: 'Web', def: 'Java Web 的基础组件规范:运行在 Servlet 容器(如 Tomcat)中、按请求-响应模型处理 HTTP。Spring MVC 的底层就是 Servlet。' },
+  'HTTP': { cat: 'Web', def: 'HyperText Transfer Protocol,超文本传输协议——浏览器与服务器之间通信的规则。常用方法 GET 查、POST 增、PUT 改、DELETE 删。' },
+  'JSON': { cat: 'Web', def: 'JavaScript Object Notation,轻量级数据交换格式。结构类似 {"name":"张三","age":18},是前后端传数据的通用语言。' },
+  'YAML': { cat: '配置', def: '一种用缩进表达层级的配置文件格式(application.yml 即它),比 XML/properties 更简洁易读。注意:缩进必须用空格,且同级对齐。' },
+
+  /* ---- 面向对象与语言特性 ---- */
+  '封装': { cat: 'OOP', def: '面向对象三大特性之一:把属性私有化(private),通过公开的 getter/setter 访问,并在其中做校验——隐藏内部细节,只暴露受控入口。' },
+  '继承': { cat: 'OOP', def: '三大特性之一:子类通过 extends 自动获得父类的属性与方法,实现代码复用。Java 单继承,所有类最终继承自 Object。' },
+  '多态': { cat: 'OOP', def: '三大特性之一:父类引用指向子类对象后,调用重写方法时"编译看左边、运行看右边"——同一调用在不同子类上表现不同行为。' },
+  'JavaBean': { cat: 'OOP', def: '符合书写规范的实体类:私有属性 + 无参/有参构造 + getter/setter,通常再重写 toString/equals。IDEA 中 Alt+Insert 可一键生成。' },
+  '注解': { cat: '语言', def: '附加在类/方法/字段上的元数据标签,如 @Override、@Service。本身只是"标记",真正的功能由编译器或框架在编译期/运行期读取并执行。' },
+  '反射': { cat: '语言', def: '运行时透视与操控类的技术:通过 Class 对象获取构造器/方法/字段,可创建实例、调用方法。Spring 创建 Bean、MyBatis 映射结果都靠它。' },
+  '泛型': { cat: '语言', def: '编译期的类型参数化:List<String> 限定元素类型,取值无需强转、放错类型编译期就报错。类型信息在运行时被擦除。' },
+  '序列化': { cat: 'IO', def: '把对象转换为可存储/传输的字节流(或 JSON 文本)的过程,反序列化则还原为对象。transient 修饰的字段不参与序列化。' },
+  'Lambda': { cat: '语言', def: 'JDK8 引入的函数式写法:(参数) -> {方法体},是"只有一个抽象方法的接口"的极简实现,常用于替代匿名内部类。' },
+  'Stream': { cat: '语言', def: 'JDK8 引入的数据处理流水线:stream() 获取流,filter/map/sorted 中间操作惰性执行,collect/forEach 终结触发。声明"要什么"而非"怎么做"。' },
+  'Optional': { cat: '语言', def: 'JDK8 的防 null 容器:用 ifPresent/orElse 等方法优雅处理"可能没有值"的场景,替代到处判 null。' },
+  '函数式接口': { cat: '语言', def: '有且仅有一个抽象方法的接口(可加 @FunctionalInterface 校验),是 Lambda 与方法引用的落地基础,如 Supplier/Consumer/Function/Predicate。' },
+  '运行时异常': { cat: '异常', def: 'RuntimeException 及其子类,多为程序逻辑 bug(空指针、越界);编译器不强制处理。与之相对的受检异常必须在编译期处理。' },
+  '编译时异常': { cat: '异常', def: '继承 Exception 但非 RuntimeException 的异常(如 IOException):编译器强制你 try-catch 或 throws,否则编译不过,用于提醒"外部风险"。' },
+
+  /* ---- 集合 ---- */
+  'HashMap': { cat: '集合', def: '基于哈希表的 Map 实现:数组+链表+红黑树,键不可重复、允许 null。默认容量 16、负载因子 0.75,超限 2 倍扩容;线程不安全。' },
+  'ArrayList': { cat: '集合', def: '基于动态数组的 List:随机访问 O(1),中间增删 O(n)。首次 add 扩容到 10,之后 1.5 倍增长;线程不安全。' },
+  'HashSet': { cat: '集合', def: '基于 HashMap 实现的 Set:元素不重复、无序。去重依据 hashCode + equals,所以重写 equals 必须同时重写 hashCode。' },
+  '哈希表': { cat: '数据结构', def: '按"哈希值"组织存储的数据结构:通过 hash(key) 直接定位桶下标,理想情况下查找 O(1);冲突时同桶用链表/红黑树存。' },
+  '红黑树': { cat: '数据结构', def: '一种自平衡二叉查找树,增删查稳定 O(log n)。HashMap 链表长度超过 8 且数组长度 ≥64 时转红黑树,防止极端冲突退化成 O(n)。' },
+
+  /* ---- 并发 ---- */
+  '线程池': { cat: '并发', def: '预先创建一批线程反复复用的任务执行器(ThreadPoolExecutor):降低创建销毁开销、控制并发上限。核心参数:核心线程数/最大线程数/队列/拒绝策略。' },
+  '线程安全': { cat: '并发', def: '多线程并发访问共享数据时,结果依然正确(不出现超卖、数据覆盖等)。手段:加锁 synchronized/Lock、原子类、或保持无状态。' },
+  'synchronized': { cat: '并发', def: 'Java 内建锁关键字:同步代码块/方法保证同一时刻只有一个线程进入临界区,锁自动释放。可重入;锁实例方法锁 this,锁静态方法锁 Class。' },
+  'volatile': { cat: '并发', def: '轻量同步修饰符:保证变量的可见性与有序性(禁止指令重排),但不保证原子性——适合"一个写多个读"的标志位场景。' },
+  '死锁': { cat: '并发', def: '两个线程互相持有对方需要的锁且都不放手,程序永久卡住。预防:按相同顺序加锁、用 tryLock 设超时;可用 jstack 诊断。' },
+
+  /* ---- 设计模式 ---- */
+  '装饰器模式': { cat: '设计模式', def: '不修改原类、通过"包装"增强功能的模式:BufferedReader 包装 FileReader 获得 readLine()。Java IO 流层层套娃正是它。' },
+  '动态代理': { cat: '设计模式', def: '运行时生成代理对象拦截方法调用的技术:JDK 动态代理基于接口(Proxy+InvocationHandler),CGLIB 基于继承。Spring AOP 的底层。' },
+  '单例': { cat: '设计模式', def: '一个类全局只存在一个实例的创建模式。Spring Bean 默认作用域即单例——容器一份实例,全程序共享,因此要保持无状态。' },
+
+  /* ---- Spring 家族 ---- */
+  'Spring': { cat: 'Spring', def: '企业级开源框架,两大核心是 IoC(对象创建与装配交给容器)与 AOP(横切逻辑与业务解耦)。Java 后端开发的事实标准。' },
+  'IoC': { cat: 'Spring', def: 'Inversion of Control,控制反转:对象的创建权从程序员手动 new 反转给容器,配合依赖注入(DI)实现解耦。是思想,DI 是落地手段。' },
+  '控制反转': { cat: 'Spring', def: '同 IoC:你不自己 new 对象,而是向容器要。创建与装配的主动权交给容器后,类之间只依赖接口,替换实现不必改业务代码。' },
+  '依赖注入': { cat: 'Spring', def: 'Dependency Injection,DI:容器创建 Bean 时自动把它依赖的对象赋进去(字段/setter/构造器)。构造器注入是 Spring 官方推荐。' },
+  'DI': { cat: 'Spring', def: '即依赖注入(Dependency Injection):IoC 思想的具体实现方式,Spring 通过它完成 Bean 之间的自动装配。' },
+  'IoC 容器': { cat: 'Spring', def: 'Spring 的核心组件:负责扫描、创建、装配、管理所有 Bean 的生命周期。常用实现是 ApplicationContext。' },
+  'ApplicationContext': { cat: 'Spring', def: 'Spring 容器接口(BeanFactory 的增强版):提供国际化、事件发布、自动注册后处理器等能力。常用实现:注解版 AnnotationConfigApplicationContext。' },
+  'Bean': { cat: 'Spring', def: '被 Spring 容器创建与管理的对象统称。默认单例、随容器启动而创建;通过 @Component 系注解或 @Bean 方法注册进容器。' },
+  'AOP': { cat: 'Spring', def: 'Aspect Oriented Programming,面向切面编程:把日志/事务等横切逻辑抽成切面织入目标方法,业务代码零侵入。底层是动态代理。' },
+  '面向切面编程': { cat: 'Spring', def: '同 AOP:横切关注点(日志、事务、权限)散落各方法,切面把它们集中声明、统一织入,消除重复模板代码。' },
+  '切面': { cat: 'Spring', def: 'Aspect = 切点 + 通知的组合:声明"在哪些方法(切点)上、执行什么增强(通知)"。@Aspect 标注的类就是一个切面。' },
+  '切点': { cat: 'Spring', def: 'Pointcut:用表达式(如 execution(* com.demo.service..*.*(..)))圈定真正要拦截的方法集合,是"实际下针的穴位"。' },
+  '织入': { cat: 'Spring', def: 'Weaving:把切面应用到目标对象、生成代理对象的过程。Spring 在运行时织入(容器创建 Bean 时由 BeanPostProcessor 生成代理)。' },
+  '事务': { cat: 'Spring', def: '一组操作作为不可分割的整体:要么全部成功提交,要么全部回滚。Spring 用 @Transactional 声明,底层是 AOP 环绕通知。' },
+  '传播行为': { cat: 'Spring', def: '事务嵌套时的处理规则,由 @Transactional(propagation=...) 指定。默认 REQUIRED:有事务就加入、没有就新建;REQUIRES_NEW 则挂起当前另起新事务。' },
+  '循环依赖': { cat: 'Spring', def: 'A 依赖 B、B 又依赖 A 的环形依赖。字段注入时 Spring 靠三级缓存兜底,构造器注入则直接启动失败——应通过合理分层避免。' },
+  'Spring Boot': { cat: 'Spring', def: 'Spring 的快速构建脚手架:起步依赖一个坐标拉全家桶、自动配置免写样板、内嵌 Tomcat 打 jar 即跑。"约定大于配置"。' },
+  'Spring MVC': { cat: 'Spring', def: 'Spring 的 Web 模块:基于 Servlet 处理 HTTP 请求。核心流程:请求 → DispatcherServlet → HandlerMapping → Controller → 返回 JSON/视图。' },
+  'DispatcherServlet': { cat: 'Spring', def: 'Spring MVC 的前端控制器:一切请求的总入口,负责查映射、调控制器、打包响应。理解它就理解了 Spring MVC 的主流程。' },
+  '前端控制器': { cat: 'Spring', def: '同 DispatcherServlet 承担的角色:集中接收所有请求并统一分发,是 MVC 架构里的"总调度"。' },
+  'starter': { cat: 'Spring', def: '起步依赖:一个 Maven 坐标带齐一整套相关依赖(如 spring-boot-starter-web 拉齐 MVC+Tomcat+JSON),免去逐个找版本。' },
+  '起步依赖': { cat: 'Spring', def: '同 starter:Spring Boot 把常用组合打包成"一键全家桶"坐标,引一个等于引一堆,且版本已由官方配平。' },
+  '自动配置': { cat: 'Spring', def: 'Spring Boot 的核心魔法:启动时按条件注解(@ConditionalOnClass 等)自动装配你引入的组件——引了 Redis 的 starter,RedisTemplate 就自动就绪。' },
+  'ORM': { cat: '框架', def: 'Object-Relational Mapping,对象关系映射:Java 对象与数据库表之间自动互转,免写大量 JDBC 样板代码。MyBatis、JPA/Hibernate 都属此类。' },
+  'MyBatis': { cat: '框架', def: '主流持久层(ORM)框架:SQL 写在注解或 XML 里,由它完成参数映射与结果集→对象的转换。对 SQL 的可控性强,国内使用极广。' },
+  'RESTful': { cat: 'Web', def: '一种接口设计风格:URL 表示资源(名词,如 /users/1),"做什么"交给 HTTP 动词(GET 查/POST 增/PUT 改/DELETE 删),接口语义一目了然。' }
+};

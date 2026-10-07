@@ -1,0 +1,6 @@
+*.zip
+*.pyc
+.DS_Store
+Thumbs.db
+_patch*.py
+node_modules/
